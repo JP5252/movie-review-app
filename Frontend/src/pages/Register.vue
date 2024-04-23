@@ -17,7 +17,7 @@
 			<input type="password" class="form-control" v-model="password_confirm" placeholder="Confirm Password"/>
 		</div>
 
-		<button class="btn btn-primary btn-block">Sign Up</button>
+		<button class="btn btn-primary btn-block">Sign Up<router-link to="/" class="navbar-brand"></router-link></button>
 	</form>
 </template>
 
@@ -55,10 +55,8 @@ import api from "../api";
 
 				// Handle response
 				console.log(response.data); // Assuming your API returns some data
-
-				// Redirect to home page after successful registration
-				const router = useRouter();
-				router.push('/');
+				
+				this.$router.push('/login');
 			} catch (error) {
 				console.error("Error:", error.message);
 				// Handle error, show error message to the user, etc.

@@ -3,7 +3,7 @@ import { config } from "./config";
 import { ACCESS_TOKEN } from "../src/constants";
 
 const api = axios.create({
-	baseURL: config.apiURL,
+	baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : config.apiURL,
 });
 
 api.interceptors.request.use(

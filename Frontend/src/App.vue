@@ -1,14 +1,3 @@
-<script>
-	import Nav from '@/components/Nav.vue'
-
-	name: 'App'
-export default {
-	components:{
-		Nav
-	}
-}
-</script>
-
 <template>
 	<div>
 		<Nav />
@@ -20,6 +9,17 @@ export default {
   		</div>
 	</div>
 </template>
+
+<script>
+	import Nav from '@/components/Nav.vue'
+
+	name: 'App'
+export default {
+	components:{
+		Nav
+	}
+}
+</script>
 
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
