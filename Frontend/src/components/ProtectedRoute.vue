@@ -1,5 +1,5 @@
 <template>
-	<div v-if="isAuthorized">HOME</div>
+	<div v-if="isAuthorized"> <Home /></div>
 	<div v-else>Loading...</div>
 </template>
   
@@ -9,8 +9,12 @@
 	import api from '../api';
 	import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
 	import { ref, onMounted } from 'vue';
+	import Home from '../pages/Home.vue';
 
 	export default {
+		components: {
+		Home
+		},
 		setup() {
 			const isAuthorized = ref(null);
 			const route = useRoute();

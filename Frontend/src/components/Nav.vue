@@ -7,7 +7,7 @@
 <template>
 	<nav class="navbar navbar-expand navbar-light fixed-top">
 		<div class="container">
-			<router-link to="/" class="navbar-brand">Home</router-link>
+			<router-link to="/" class="navbar-brand">Movie Reviews</router-link>
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">

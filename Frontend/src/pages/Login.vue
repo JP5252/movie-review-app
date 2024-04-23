@@ -2,6 +2,8 @@
 	<form @submit.prevent="handleSubmit" class="login-form">
 		<h3 class="login-text">Login</h3>
 
+		<p v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
 		<div class="form-group">
 			<label class="form-label">Username</label>
 			<input type="text" class="form-control" v-model="username" placeholder="Username"/>
@@ -27,7 +29,8 @@
 		data() {
 			return {
 				username: '',
-				password: ''
+				password: '',
+				errorMessage: ''
 			}
 		},
 
@@ -56,7 +59,7 @@
 					this.$router.push('/');
 				} catch (error) {
 					console.error("Error:", error.message);
-					// Handle error, show error message to the user, etc.
+					this.errorMessage = "Invalid username and/or password.";
 				}
 			}
 		}

@@ -2,6 +2,8 @@
 	<form @submit.prevent="handleSubmit">
 		<h3>Sign Up</h3>
 
+		<p v-if="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
 		<div class="form-group">
 			<label>Username</label>
 			<input type="text" class="form-control" v-model="username" placeholder="Username"/>
@@ -23,7 +25,6 @@
 
 <script>
 import { useRouter } from 'vue-router';
-
 import api from "../api";
 
 	export default {
@@ -33,35 +34,39 @@ import api from "../api";
 			return {
 				username: '',
 				password: '',
-				password_confirm: ''
+				password_confirm: '',
+				errorMessage: ''
 			}
 		},
 
 		methods: {
-		async handleSubmit() {
-			try {
-				// check if the password and the confirmation match
-				if (this.password !== this.password_confirm) {
-					throw new Error("Passwords do not match");
+			async handleSubmit() {
+				try {
+					// check if the password and the confirmation match
+					if (this.password !== this.password_confirm) {
+						throw new Error("Passwords do not match");
+					}
+
+					const data = {
+						username: this.username,
+						password: this.password,
+					};
+
+					// Handle response
+					console.log(data); 
+
+					// make the api call
+					const response = await api.post('/api/user/register/', data);
+
+					// Handle response
+					console.log(response.data); 
+					
+					this.$router.push('/login');
+				} catch (error) {
+					console.error("Error:", error.message);
+					this.errorMessage = "There was a problem with you username and/or password. Please try again.";
 				}
-
-				const data = {
-					username: this.username,
-					password: this.password,
-				};
-
-				// make the api call
-				const response = await api.post('/api/user/register/', data);
-
-				// Handle response
-				console.log(response.data); // Assuming your API returns some data
-				
-				this.$router.push('/login');
-			} catch (error) {
-				console.error("Error:", error.message);
-				// Handle error, show error message to the user, etc.
 			}
 		}
-	}
 	}
 </script>

@@ -6,7 +6,7 @@ import NotFound from "@/pages/NotFound.vue";
 import ProtectedRoute from "@/components/ProtectedRoute.vue";
 
 const routes = [
-	{ path: "/", component: ProtectedRoute, children: [{ path: "", component: Home }] },
+	{ path: "/", component: ProtectedRoute, children: [{ path: "/", component: Home }] },
 	{ path: "/login", component: Login },
 	{ path: "/logout", redirect: "login"},
 	{ path: "/register", component: Register },
