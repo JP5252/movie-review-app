@@ -1,7 +1,8 @@
 <template>
 	<div class="review-container">
 		<p class="review-title">{{ review.title }}</p>
-		<p class="review-content">{{ review.content }}</p>
+		<p class="review-movie">{{ review.movie }}</p>
+		<p class="review-content">{{ review.content }}</p>	
 		<p class="review-date">{{ formattedDate }}</p>
 		<button class="delete-button" @click="handleDelete">
 			Delete

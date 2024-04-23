@@ -2,12 +2,15 @@
 	<div>
 		<div>
 			<h2>Reviews</h2>
-			<Review v-for="review in reviews" :key="review.id" :review="review" @onDelete="deleteReview" />
+			<Review v-for="review in reviews" :key="review.id" :review="review" :onDelete="deleteReview" />
 		</div>
 		<h2>Create a Review</h2>
 		<form @submit.prevent="createReview">
 			<label for="title">Title:</label><br />
-			<input type="text" id="title" name="title" v-model="title" required /><br />
+			<input type="text" id="title" name="title" v-model="title" required
+			/><br />
+			<label for="title">Movie name:</label><br />
+			<input type="text" id="movie" name="movie" v-model="movie" required /><br />
 			<label for="content">Content:</label><br />
 			<textarea id="content" name="content" v-model="content" required></textarea><br />
 			<input type="submit" value="Submit" />
@@ -28,6 +31,7 @@ export default {
 		const reviews = ref([]);
 		const content = ref('');
 		const title = ref('');
+		const movie = ref('')
 
 		const getReviews = () => {
 			api.get('/api/reviews/')
@@ -51,7 +55,7 @@ export default {
 
 		const createReview = e => {
 			e.preventDefault();
-			api.post('/api/reviews/', { content: content.value, title: title.value })
+			api.post('/api/reviews/', { content: content.value, title: title.value, movie: movie.value})
 				.then(res => {
 					if (res.status === 201) alert('Review created!');
 					else alert('Failed to make review.');
@@ -68,6 +72,7 @@ export default {
 			reviews,
 			content,
 			title,
+			movie,
 			deleteReview,
 			createReview
 		};
