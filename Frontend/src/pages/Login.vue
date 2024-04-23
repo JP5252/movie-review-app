@@ -45,6 +45,8 @@
 					// Handle response
 					const access_token = response.data.access;
 					const refresh_token = response.data.refresh;
+					console.log('access_token:', access_token);
+					console.log('refresh_token:', refresh_token);
 
 					// Store tokens locally
 					localStorage.setItem(ACCESS_TOKEN, access_token);
