@@ -1,4 +1,4 @@
 [[headers]]
-  for = "/*.js"
+  for = "/*.ts"
   [headers.values]
-    Content-Type = "application/javascript"
+    Content-Type = "application/typescript"
