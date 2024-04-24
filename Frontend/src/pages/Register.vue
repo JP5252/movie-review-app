@@ -1,3 +1,6 @@
+<!-- Register page that displays a form for the user to create an account,
+	 checks if the passwords match before sending the data to the backend. Upon
+	 successful account creation the user will be sent to the login page.-->
 <template>
 	<form @submit.prevent="handleSubmit">
 		<h3>Sign Up</h3>

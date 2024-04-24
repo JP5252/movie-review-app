@@ -1,3 +1,5 @@
+<!-- home page for user, displays all their reviews and allows them to post new
+	 movie reviews -->
 <template>
 	<div>
 		<div>

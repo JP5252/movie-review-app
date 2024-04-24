@@ -14,5 +14,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  // this line makes it so it builds with ./ at the start of file paths
   base: './',
 })

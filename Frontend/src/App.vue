@@ -1,3 +1,4 @@
+<!-- Base app page that houses and implements the nav and router components -->
 <template>
 	<div>
 		<Nav />

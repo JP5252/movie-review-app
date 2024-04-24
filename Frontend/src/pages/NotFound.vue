@@ -1,3 +1,4 @@
+<!-- Generic 404 not found page -->
 <script>
 	export default {
 		name: 'NotFound'

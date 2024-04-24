@@ -1,3 +1,5 @@
+<!-- Login page displays a form for user to fill in to get their access and
+	 refresh tokens, users are sent to their homepage on successful login -->
 <template>
 	<form @submit.prevent="handleSubmit" class="login-form">
 		<h3 class="login-text">Login</h3>

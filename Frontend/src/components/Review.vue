@@ -1,3 +1,4 @@
+<!-- Review component that is called to display a review -->
 <template>
 	<div class="review-container">
 		<p class="review-title">{{ review.title }}</p>

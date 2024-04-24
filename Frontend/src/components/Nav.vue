@@ -1,3 +1,4 @@
+<!-- Nav bar component for navigating the application -->
 <script>
 	export default {
 		name: 'Nav'
