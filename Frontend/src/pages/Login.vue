@@ -42,7 +42,7 @@
 						password: this.password,
 					};
 
-					// Make the API call
+					// Make API call
 					const response = await api.post('/api/token/', data);
 
 					// Handle response

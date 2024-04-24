@@ -1,25 +1,27 @@
+<!-- this component shows the user a generic loading screen if their token is expired or invalid otherwise it will direct them to their homepage-->
 <template>
-	<div v-if="isAuthorized"> <Home /></div>
-	<div v-else>Loading...</div>
+	<div v-if="isAuthorized"><Home /></div>
+	<div v-else><LoadingIndicator /></div>
 </template>
   
 <script>
-	import { useRoute, useRouter } from 'vue-router';
 	import { jwtDecode } from 'jwt-decode';
 	import api from '../api';
 	import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
 	import { ref, onMounted } from 'vue';
 	import Home from '../pages/Home.vue';
+	import LoadingIndicator from './LoadingIndicator.vue';
 
 	export default {
 		components: {
-		Home
+		Home,
+		LoadingIndicator
 		},
 		setup() {
 			const isAuthorized = ref(null);
-			const route = useRoute();
-			const router = useRouter();
 
+			// this will try and refresh the access token
+			// will return error if token is invalid
 			const refreshToken = async () => {
 			const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 			try {
@@ -51,6 +53,7 @@
 			console.log('Token expiration:', tokenExpiration);
 			console.log('Current time:', now);
 
+			// check if current access token is expired and try to refresh it
 			if (tokenExpiration < now) {
 				console.log('Token expired. Refreshing token...');
 				await refreshToken();
@@ -61,7 +64,7 @@
 			};
 
 			onMounted(async () => {
-			await auth();
+				await auth();
 			});
 
 			return { isAuthorized };

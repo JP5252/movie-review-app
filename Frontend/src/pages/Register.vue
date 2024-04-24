@@ -52,13 +52,13 @@ import api from "../api";
 						password: this.password,
 					};
 
-					// Handle response
+					// check data
 					console.log(data); 
 
 					// make the api call
 					const response = await api.post('/api/user/register/', data);
 
-					// Handle response
+					// check response
 					console.log(response.data); 
 					
 					this.$router.push('/login');

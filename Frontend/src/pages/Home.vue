@@ -1,18 +1,26 @@
 <template>
 	<div>
 		<div>
-			<h2>Reviews</h2>
+			<h2 class="reviews-title">Your Movie Reviews</h2>
 			<Review v-for="review in reviews" :key="review.id" :review="review" :onDelete="deleteReview" />
 		</div>
-		<h2>Create a Review</h2>
+		<h2 class="reviews-title">Create a Review</h2>
 		<form @submit.prevent="createReview">
-			<label for="title">Title:</label><br />
-			<input type="text" id="title" name="title" v-model="title" required
-			/><br />
-			<label for="title">Movie name:</label><br />
-			<input type="text" id="movie" name="movie" v-model="movie" required /><br />
-			<label for="content">Content:</label><br />
-			<textarea id="content" name="content" v-model="content" required></textarea><br />
+			<label for="title">Title:</label>
+			<br />
+			<input class="review-input" type="text" id="title" name="title"
+			v-model="title" required />
+			<br />
+			<label for="title">Movie name:</label>
+			<br />
+			<input class="review-input" type="text" id="movie" name="movie"
+			v-model="movie" required />
+			<br />
+			<label for="content">Content:</label>
+			<br />
+			<textarea class="review-input content-textarea" id="content"
+			name="content" v-model="content" required></textarea>
+			<br />
 			<input type="submit" value="Submit" />
 		</form>
 	</div>
@@ -33,6 +41,7 @@ export default {
 		const title = ref('');
 		const movie = ref('')
 
+		// get all the reviews for the current user
 		const getReviews = () => {
 			api.get('/api/reviews/')
 				.then(res => res.data)
@@ -43,6 +52,7 @@ export default {
 				.catch(err => alert(err));
 		};
 
+		// delete the selected review
 		const deleteReview = id => {
 			api.delete(`/api/reviews/delete/${id}/`)
 				.then(res => {
@@ -53,6 +63,7 @@ export default {
 				.catch(error => alert(error));
 		};
 
+		// add the review to the database
 		const createReview = e => {
 			e.preventDefault();
 			api.post('/api/reviews/', { content: content.value, title: title.value, movie: movie.value})
@@ -81,4 +92,18 @@ export default {
 </script>
 
 <style>
+
+	.reviews-title {
+		display: flex;
+		justify-content: center;
+	}
+
+	.review-input {
+		width: 100%;
+	}
+
+	.content-textarea {
+		min-height: 100px;
+	}
+
 </style>
